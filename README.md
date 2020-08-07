@@ -96,9 +96,9 @@ Things you may want to cover:
 | ------------ | ------- | ----------- |
 | postal_code  | string  | null: false |
 | area_id      | integer | null: false |
-| address_1    | string  | null: false |
-| address_2    | string  | null: false |
-| address_3    | string  | null: false |
+| city         | string  | null: false |
+| block_number | string  | null: false |
+| building     | string  | null: false |
 | phone_number | string  | null: false |
 | item         | references | null: false, foreign_key: true |
 
