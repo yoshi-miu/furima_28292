@@ -41,16 +41,16 @@ Things you may want to cover:
 
 - has_many :items
 - has_many :comments
-- has_one  :purchase
+- has_many  :purchase
 
 ## Items テーブル
 
 | Column      | Type    | Options     |
 | ----------- | ------- | ----------- |
 | name        | string  | null: false |
-| price       | string  | null: false |
+| price       | integer | null: false |
 | description | string  | null: false |
-| user_id     | references | null: false, foreign_key: true |
+| user        | references | null: false, foreign_key: true |
 | genre_id    | integer | null: false |
 | status_id   | integer | null: false |
 | bear_id     | integer | null: false |
@@ -63,13 +63,14 @@ Things you may want to cover:
 - has_many :comments
 - has_one_attached :image
 - has_one :purchase
+- has_one :shipment
 
 ## Comments テーブル
 
-| Column   | Type        | Options                        |
-| -------- | ----------- | ------------------------------ |
-| user_id  | references  | null: false, foreign_key: true |
-| item_id  | references  | null: false, foreign_key: true |
+| Column | Type        | Options                        |
+| ------ | ----------- | ------------------------------ |
+| user   | references  | null: false, foreign_key: true |
+| item   | references  | null: false, foreign_key: true |
 
 ### Association
 
@@ -78,27 +79,29 @@ Things you may want to cover:
 
 ## Purchases
 
-| Column   | Type        | Options                        |
-| -------- | ----------- | ------------------------------ |
-| user_id  | references  | null: false, foreign_key: true |
-| item_id  | references  | null: false, foreign_key: true |
+| Column | Type        | Options                        |
+| ------ | ----------- | ------------------------------ |
+| user   | references  | null: false, foreign_key: true |
+| item   | references  | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :item
-- has_one :shipment
 
 ## Shipments
 
 | Column       | Type    | Options     |
 | ------------ | ------- | ----------- |
 | postal_code  | integer | null: false |
-| address      | string  | null: false |
+| area_id      | integer | null: false |
+| address_1    | string  | null: false |
+| address_2    | string  | null: false |
+| address_3    | string  | null: false |
 | phone_number | integer | null: false |
-| purchase_id  | references | null: false, foreign_key: true |
+| item         | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :purchase
+- belongs_to :item
 
