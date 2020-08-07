@@ -93,12 +93,12 @@ Things you may want to cover:
 
 | Column       | Type    | Options     |
 | ------------ | ------- | ----------- |
-| postal_code  | integer | null: false |
+| postal_code  | string  | null: false |
 | area_id      | integer | null: false |
 | address_1    | string  | null: false |
 | address_2    | string  | null: false |
 | address_3    | string  | null: false |
-| phone_number | integer | null: false |
+| phone_number | string  | null: false |
 | item         | references | null: false, foreign_key: true |
 
 ### Association
