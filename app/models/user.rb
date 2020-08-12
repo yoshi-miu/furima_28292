@@ -11,8 +11,7 @@ class User < ApplicationRecord
   with_options presence: true do
     validates :nickname, uniqueness: { case_sensitive: true }
     validates :birthday
-    validates :password, length: { minimum: 6 },
-                         format: { with: PASSWORD_REGEX }
+    validates :password, format: { with: PASSWORD_REGEX }
     with_options format: { with: NAME_REGEX } do
       validates :last_name
       validates :first_name
