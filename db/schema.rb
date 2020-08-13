@@ -10,6 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "price", null: false
+    t.string "description", null: false
+    t.bigint "user_id", null: false
+    t.integer "genre_id", null: false
+    t.integer "status_id", null: false
+    t.integer "bear_id", null: false
+    t.integer "area_id", null: false
+    t.integer "shipment_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_items_on_user_id"
+  end
 ActiveRecord::Schema.define(version: 2020_08_07_071412) do
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
