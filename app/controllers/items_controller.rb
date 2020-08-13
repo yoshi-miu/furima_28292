@@ -1,4 +1,11 @@
 class ItemsController < ApplicationController
   def index
   end
+
+  private
+
+  def item_params
+    require(item).permit(:name, :price, :description, :genre_id, :status_id, :bear_id,
+                         :area_id, :shipment_id).merge(user_id: current_user.id)
+  end
 end
