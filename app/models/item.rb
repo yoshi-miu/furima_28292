@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :genre
   belongs_to_active_hash :status
   belongs_to_active_hash :bear
+  belongs_to_active_hash :area
 
   with_options presence: true do
     validates :name
@@ -16,6 +17,7 @@ class Item < ApplicationRecord
       validates :genre_id
       validates :status_id
       validates :bear_id
+      validates :area_id
     end
   end
 end
