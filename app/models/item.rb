@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :status
   belongs_to_active_hash :bear
   belongs_to_active_hash :area
+  belongs_to_active_hash :shipment
 
   with_options presence: true do
     validates :name
@@ -18,6 +19,7 @@ class Item < ApplicationRecord
       validates :status_id
       validates :bear_id
       validates :area_id
+      validates :shipment_id
     end
   end
 end
