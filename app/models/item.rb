@@ -10,8 +10,10 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipment
 
   with_options presence: true do
+    validates :image
     validates :name
-    validates :price
+    validates :price, numericality: { greater_than_or_equal_to: 300,
+                                      less_than_or_equal_to: 9999999 }
     validates :description
     validates :user
     with_options numericality: { other_than: 1 } do
