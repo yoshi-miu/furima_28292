@@ -4,6 +4,7 @@ class Item < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :genre
+  belongs_to_active_hash :status
 
   with_options presence: true do
     validates :name
@@ -11,5 +12,6 @@ class Item < ApplicationRecord
     validates :description
     validates :user
     validates :genre_id, numericality: { other_than: 1 }
+    validates :status_id, numericality: { other_than: 1 }
   end
 end
