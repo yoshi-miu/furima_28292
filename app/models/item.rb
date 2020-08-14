@@ -5,13 +5,17 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :genre
   belongs_to_active_hash :status
+  belongs_to_active_hash :bear
 
   with_options presence: true do
     validates :name
     validates :price
     validates :description
     validates :user
-    validates :genre_id, numericality: { other_than: 1 }
-    validates :status_id, numericality: { other_than: 1 }
+    with_options numericality: { other_than: 1 } do
+      validates :genre_id
+      validates :status_id
+      validates :bear_id
+    end
   end
 end
