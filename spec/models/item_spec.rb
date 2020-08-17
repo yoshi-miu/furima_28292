@@ -6,7 +6,7 @@ RSpec.describe Item, type: :model do
       @item = FactoryBot.build(:item)
       @item.image = fixture_file_upload('public/images/IMG_0166.jpeg')
     end
-    
+
     it '入力項目が全て存在すれば出品できる' do
       expect(@item).to be_valid
     end
@@ -23,7 +23,7 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include("Name can't be blank")
     end
 
-        it 'descriptionが空では出品できない' do
+    it 'descriptionが空では出品できない' do
       @item.description = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Description can't be blank")
