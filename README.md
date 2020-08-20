@@ -63,7 +63,7 @@ Things you may want to cover:
 - has_many :comments
 - has_one_attached :image
 - has_one :purchase
-- has_one :shipment
+- has_one :shipAddress
 
 ## Comments テーブル
 
@@ -90,7 +90,7 @@ Things you may want to cover:
 - belongs_to :user
 - belongs_to :item
 
-## Shipments
+## ShipAddresses
 
 | Column       | Type    | Options     |
 | ------------ | ------- | ----------- |
