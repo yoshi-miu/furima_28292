@@ -29,4 +29,4 @@ function tax_profit() {
     
   });
 }
-window.addEventListener("turbolinks:load", tax_profit);
+window.addEventListener("load", tax_profit);
