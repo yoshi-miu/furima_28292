@@ -1,5 +1,7 @@
 class TransactionsController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_seller
+  before_action :sold_item
   before_action :set_item, only: [:index, :create]
 
   def index
@@ -35,5 +37,17 @@ class TransactionsController < ApplicationController
       card: transaction_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def check_seller
+    if current_user.id == Item.find(params[:id]).user_id
+      redirect_to root_path
+    end
+  end
+
+  def sold_item
+    if Item.find(params[:id]).purchase
+      redirect_to root_path
+    end
   end
 end
