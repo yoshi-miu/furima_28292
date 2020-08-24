@@ -67,5 +67,11 @@ RSpec.describe TransactionForm, type: :model do
       @transaction.valid?
       expect(@transaction.errors.full_messages).to include('Phone number is invalid')
     end
+
+    it 'phone_numberが11桁より多いと保存できない' do
+      @transaction.phone_number = '090_123_456_789'
+      @transaction.valid?
+      expect(@transaction.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
+    end
   end
 end

@@ -11,7 +11,8 @@ class TransactionForm
     validates :area_id, numericality: { other_than: 1 }
     validates :city
     validates :block_number
-    validates :phone_number, format: { with: PHONENUMBER_REGEX }
+    validates :phone_number, format: { with: PHONENUMBER_REGEX },
+                             length: { maximum: 11 }
   end
 
   def save
