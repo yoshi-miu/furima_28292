@@ -27,7 +27,7 @@ class TransactionsController < ApplicationController
   end
 
   def set_item
-    @item = Item.find(params{:id})
+    @item = Item.find(params[:id])
   end
 
   def pay_item
