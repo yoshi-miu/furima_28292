@@ -46,10 +46,20 @@ RSpec.describe TransactionForm, type: :model do
       expect(@transaction.errors.full_messages).to include("Block number can't be blank")
     end
 
+    it 'buildingが空でも保存できる' do
+      @transaction.building = nil
+      expect(@transaction).to be_valid
+    end
+
     it 'phone_numberが空では保存できない' do
       @transaction.phone_number = nil
       @transaction.valid?
       expect(@transaction.errors.full_messages).to include("Phone number can't be blank")
+    end
+
+    it 'phone_numberが数字のみで入力されていれば保存できる' do
+      @transaction.phone_number = '09012345678'
+      expect(@transaction).to be_valid
     end
 
     it 'phone_numberが数字のみで入力されていないと保存できない' do
