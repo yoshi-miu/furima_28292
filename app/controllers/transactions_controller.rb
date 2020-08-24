@@ -31,7 +31,7 @@ class TransactionsController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price,
       card: transaction_params[:token],
@@ -40,14 +40,10 @@ class TransactionsController < ApplicationController
   end
 
   def check_seller
-    if current_user.id == Item.find(params[:id]).user_id
-      redirect_to root_path
-    end
+    redirect_to root_path if current_user.id == Item.find(params[:id]).user_id
   end
 
   def sold_item
-    if Item.find(params[:id]).purchase
-      redirect_to root_path
-    end
+    redirect_to root_path if Item.find(params[:id]).purchase
   end
 end
