@@ -23,11 +23,11 @@ class TransactionsController < ApplicationController
 
   def transaction_params
     params.require(:transaction_form).permit(:postal_code, :area_id, :city, :block_number, :building,
-                                             :phone_number).merge(user_id: current_user.id, item_id: params[:id], token: params[:token])
+                                             :phone_number).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 
   def set_item
-    @item = Item.find(params[:id])
+    @item = Item.find(params[:item_id])
   end
 
   def pay_item
@@ -40,10 +40,10 @@ class TransactionsController < ApplicationController
   end
 
   def check_seller
-    redirect_to root_path if current_user.id == Item.find(params[:id]).user_id
+    redirect_to root_path if current_user.id == Item.find(params[:item_id]).user_id
   end
 
   def sold_item
-    redirect_to root_path if Item.find(params[:id]).purchase
+    redirect_to root_path if Item.find(params[:item_id]).purchase
   end
 end
