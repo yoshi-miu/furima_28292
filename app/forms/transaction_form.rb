@@ -14,7 +14,7 @@ class TransactionForm
     validates :phone_number, format: { with: PHONENUMBER_REGEX },
                              length: { maximum: 11 }
   end
-
+  
   def save
     ShipAddress.create(postal_code: postal_code, area_id: area_id, city: city, block_number: block_number,
                        building: building, phone_number: phone_number, item_id: item_id)
